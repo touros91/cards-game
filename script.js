@@ -21,6 +21,7 @@ async function handleClick() {
     header.textContent = ''
     computerScoreEl.textContent = `Computer score: 0`
     myScoreEl.textContent = `My score: 0`
+    drawCardBtn.disabled = false
 }
 
 newDeckBtn.addEventListener("click", handleClick)
@@ -41,11 +42,11 @@ drawCardBtn.addEventListener("click", async () => {
     if (data.remaining === 0) {
         drawCardBtn.disabled = true
         if (computerScore > myScore) {
-            header.textContent = "The computer won the game!"
+            header.innerHTML = `<span class="winner">Oh no... Computer won the game!</span class="winner">`
         } else if (myScore > computerScore) {
-            header.textContent = "You won the game!"
+            header.innerHTML = `<span class="winner">YOU WON THE GAME!</span class="winner">`
         } else {
-            header.textContent = "It's a tie game!"
+            header.innerHTML = `<span class="winner">It's a tie game!</span class="winner">`
         }
     }
 })
